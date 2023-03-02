@@ -103,6 +103,15 @@ const path = require('path')
 // })
 
 //створює папку
-fs.mkdir(path.join('test','test2'), (err)=>{
+fs.mkdir(path.join('test','test2.txt'), (err)=>{
     if (err) throw new Error();
 })
+
+// function fileHandler(){
+//     fs.open( 'test/testFile.txt', 'w', (err) => {
+//         if(err) throw err;
+//         console.log('File created');
+//     });
+// }
+//
+// fileHandler()
