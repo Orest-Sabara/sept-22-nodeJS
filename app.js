@@ -1,117 +1,152 @@
-// -------------module
+// ----------EVENTS
 
-// const {sayHello} = require('./helper');
+// const event = require('node:events');
+// const {logToConsole} = require("./test/test");
 //
-// sayHello();
-
-// -------------global variables
-
-// console.log('Log from app.js')
-// // \sept-22-nodeJS
-// console.log(__dirname);
-// // \sept-22-nodeJS\app.js
-// console.log(__filename);
-// // \sept-22-nodeJS
-// console.log(process.cwd());
+// const eventEmitter = new event();
 //
+// //можна багато разів
+// eventEmitter.on('click', (data)=>{
+//     console.log(data)
+//     console.log('click click click')
+// })
 //
-// const {logToConsole} = require('./test/test')
+// eventEmitter.emit('click', {name: "Action"});
+// eventEmitter.emit('click', {name: "Action"});
+// eventEmitter.emit('click', {name: "Action"});
+// eventEmitter.emit('click', {name: "Action"});
 //
-// logToConsole()
+// // [ 'click' ]
+// console.log('1st eventNames',eventEmitter.eventNames())
+//
+// //тільки раз
+// eventEmitter.once('clickAndDie', ()=>{
+//     console.log("gonna die after being called")
+// })
+//
+//     // [ 'click', 'clickAndDie' ]
+// console.log('2nd eventNames',eventEmitter.eventNames())
+//
+// eventEmitter.emit('clickAndDie')
+// eventEmitter.emit('clickAndDie')
+//
+// // [ 'click' ]
+// console.log('3rd eventNames',eventEmitter.eventNames())
 
-// console.log(process)
 
-// -------------Path
+// ----------STREAMS
+
+// const fs = require('fs');
 // const path = require('path');
 //
-// const joinedPath = path.join('test', 'test.js');
-// // test\test.js
-// console.log(joinedPath)
-//
-// const joinedPathDir = path.join(__dirname, 'test', 'test.js');
-// // повний шлях
-// console.log(joinedPathDir)
-//
-// const resolvedPath = path.resolve('test', 'test.js');
-// // повний шлях && так само як у join(__dirname)
-// console.log(resolvedPath)
-//
-// const normalizePath  = path.normalize('test/////////test///12/test.js');
-// // test\test\12\test.js
-// console.log(normalizePath)
+// const readStream = fs.createReadStream(path.join('test', 'text.txt'), {encoding:"utf-8"});
+// const writeStream = fs.createWriteStream(path.join('test', 'text2.txt'))
+
+// read, write, duplex, transform --- types of streams !!!
+
+//копіює файл по частинах
+// readStream.on('data', (chunk) => {
+//   writeStream.write(chunk);
+// });
 
 
-// -------------OS
-// const os = require('os');
-//
-// console.log(os.arch())
-// console.log(os.cpus())
-
-
-// -------------FS
-const fs = require('fs');
-const path = require('path')
-
-//виводить вміст
-// fs.readFile(path.join('test','text.txt'),{encoding: 'utf-8'}, (err,data) => {
-//     console.log(err)
-//     if (err) throw new Error();
-//     console.log(data)
-// })
-
-// fs.readFile(path.join('test','text.txt'),{encoding: 'utf-8'}, (err,data) => {
-//     console.log(err)
-//     if (err) throw new Error();
-//     console.log(data.toString())
-// })
-
-// додає в кінець
-// fs.appendFile(path.join('test', 'text2.txt'),'\n Hello from append!',(err)=> {
-//     if (err) throw new Error();
-// })
-
-// //очищує файл
-// fs.truncate(path.join("test","text2.txt"), (err)=>{
-//     if (err) throw new Error();
-// })
-
-//видаляє
-// fs.unlink(path.join('test', 'text2.txt'), (err)=>{
-//     if (err) throw new Error();
-// })
-
-// масив елементів які є всередині [ 'test.js', 'text.txt' ]
-// fs.readdir(path.join('test'), (err,data)=>{
-//     if (err) throw new Error();
-//     console.log(data);
-// })
-
-// fs.stat(path.join('test'), (err,stats)=>{
-//     if (err) throw new Error();
-//     console.log(stats)
-//     console.log(stats.isDirectory())        //true   бо тест є папка
-//     console.log(stats.isFile())             //false  бо тест не є файл
-// })
-
-
-// проходиться по файлах в папці test -> true, true
-// fs.readdir(path.join('test'), {withFileTypes: true},(err,data)=>{
-//     if (err) throw new Error();
-//     data.forEach(file=> {
-//         console.log(file.isFile());
-//     })
-// })
-
-//створює папку
-fs.mkdir(path.join('test','test2.txt'), (err)=>{
-    if (err) throw new Error();
-})
-
-// function fileHandler(){
-//     fs.open( 'test/testFile.txt', 'w', (err) => {
-//         if(err) throw err;
-//         console.log('File created');
-//     });
+//якщо сталася якась помилка знищуємо readStream.destroy();  і запишеться у кінець файлу writeStream.end()
+// const handleError = () => {
+//     console.log("ERROR!!!");
+//     readStream.destroy();
+//     writeStream.end('Error while reading file')
 // }
 //
-// fileHandler()
+// //копіює файл по частинах
+// readStream
+//     .on('error', handleError)
+//     .pipe(writeStream)
+//     .on('error', handleError)
+
+
+// ----------Express
+const express = require('express');
+
+const app = express();
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+const users = [
+    {
+        name: 'Oleh',
+        age: 22,
+        gender: 'male'
+    },
+    {
+        name: 'Sabina',
+        age: 45,
+        gender: 'female'
+    },
+    {
+        name: 'Anton',
+        age: 42,
+        gender: 'female'
+    },
+    {
+        name: 'cocos',
+        age: 4,
+        gender: 'male'
+    }
+]
+
+app.get('/users', (req, res)=>{
+    res.status(200).json(users);
+})
+
+app.get('/users/:userId', (req, res)=>{
+    const {userId} = req.params
+    const user = users[+userId - 1];
+
+    res.json(user)
+})
+
+app.get('/welcome', (req, res)=>{
+    res.send('welcome!!!');
+    // res.end()
+})
+
+app.post('/users', (req, res)=>{
+    const body = req.body;
+    users.push(body)
+
+    res.status(201).json({
+        message: "user created"
+    })
+})
+
+app.put('/users/:userId', (req, res)=>{
+    const { userId } = req.params;
+    const updatedUser = req.body;
+
+    users[+userId] = updatedUser;
+
+    res.status(200).json({
+        message: 'User updated',
+        data: users[+userId]
+    })
+})
+
+
+// app.patch()
+
+app.delete('/users/:userId', (req, res)=>{
+    const {userId} = req.params;
+
+    users.splice(+userId, 1);
+
+    res.status(200).json({
+        message:"User deleted"
+    })
+})
+
+const PORT = 5100
+
+app.listen(PORT, ()=>{
+    console.log(`Server has started on PORT ${PORT}`)
+})
