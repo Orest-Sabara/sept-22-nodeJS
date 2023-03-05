@@ -1,0 +1,26 @@
+{
+  "name": "sept-22-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js sept-22",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orest-Sabara/sept-22-nodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orest-Sabara/sept-22-nodeJS/issues"
+  },
+  "homepage": "https://github.com/Orest-Sabara/sept-22-nodeJS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
