@@ -1,117 +1,85 @@
-// -------------module
+const fs = require('node:fs/promises');
 
-// const {sayHello} = require('./helper');
+const path = require('node:path');
+
+
+// const worker = async () => {
+//     try {
+//         const fileNames = ['file1.txt','file2.txt','file3.txt','file4.txt']
+//         const folderNames = ['folder1','folder2','folder3','folder4']
 //
-// sayHello();
-
-// -------------global variables
-
-// console.log('Log from app.js')
-// // \sept-22-nodeJS
-// console.log(__dirname);
-// // \sept-22-nodeJS\app.js
-// console.log(__filename);
-// // \sept-22-nodeJS
-// console.log(process.cwd());
+//         // цикл for of при await буде чекати, всі інші цикли ні
+//         for (const folderName of folderNames) {
+//             await fs.mkdir(path.join(process.cwd(), folderName), {recursive: true});        //{recursive: true} не валить помилку коли папки вже існують
+//         }
 //
+//         //     //папка в папці в папці ... folder1 -> doc1 -> doc2 -> doc3
+//         // for (const folderName of folderNames) {
+//         //     await fs.mkdir(path.join(process.cwd(), folderName, 'doc1','doc2','doc3'), {recursive: true});        //{recursive: true} якщо папки не існує воно створить і піде далі
+//         // }
 //
-// const {logToConsole} = require('./test/test')
-//
-// logToConsole()
-
-// console.log(process)
-
-// -------------Path
-// const path = require('path');
-//
-// const joinedPath = path.join('test', 'test.js');
-// // test\test.js
-// console.log(joinedPath)
-//
-// const joinedPathDir = path.join(__dirname, 'test', 'test.js');
-// // повний шлях
-// console.log(joinedPathDir)
-//
-// const resolvedPath = path.resolve('test', 'test.js');
-// // повний шлях && так само як у join(__dirname)
-// console.log(resolvedPath)
-//
-// const normalizePath  = path.normalize('test/////////test///12/test.js');
-// // test\test\12\test.js
-// console.log(normalizePath)
-
-
-// -------------OS
-// const os = require('os');
-//
-// console.log(os.arch())
-// console.log(os.cpus())
-
-
-// -------------FS
-const fs = require('fs');
-const path = require('path')
-
-//виводить вміст
-// fs.readFile(path.join('test','text.txt'),{encoding: 'utf-8'}, (err,data) => {
-//     console.log(err)
-//     if (err) throw new Error();
-//     console.log(data)
-// })
-
-// fs.readFile(path.join('test','text.txt'),{encoding: 'utf-8'}, (err,data) => {
-//     console.log(err)
-//     if (err) throw new Error();
-//     console.log(data.toString())
-// })
-
-// додає в кінець
-// fs.appendFile(path.join('test', 'text2.txt'),'\n Hello from append!',(err)=> {
-//     if (err) throw new Error();
-// })
-
-// //очищує файл
-// fs.truncate(path.join("test","text2.txt"), (err)=>{
-//     if (err) throw new Error();
-// })
-
-//видаляє
-// fs.unlink(path.join('test', 'text2.txt'), (err)=>{
-//     if (err) throw new Error();
-// })
-
-// масив елементів які є всередині [ 'test.js', 'text.txt' ]
-// fs.readdir(path.join('test'), (err,data)=>{
-//     if (err) throw new Error();
-//     console.log(data);
-// })
-
-// fs.stat(path.join('test'), (err,stats)=>{
-//     if (err) throw new Error();
-//     console.log(stats)
-//     console.log(stats.isDirectory())        //true   бо тест є папка
-//     console.log(stats.isFile())             //false  бо тест не є файл
-// })
-
-
-// проходиться по файлах в папці test -> true, true
-// fs.readdir(path.join('test'), {withFileTypes: true},(err,data)=>{
-//     if (err) throw new Error();
-//     data.forEach(file=> {
-//         console.log(file.isFile());
-//     })
-// })
-
-//створює папку
-fs.mkdir(path.join('test','test2.txt'), (err)=>{
-    if (err) throw new Error();
-})
-
-// function fileHandler(){
-//     fs.open( 'test/testFile.txt', 'w', (err) => {
-//         if(err) throw err;
-//         console.log('File created');
-//     });
+//         // створює файли з написом в середині.
+//         for (const fileName of fileNames) {
+//             await fs.writeFile(path.join(process.cwd(), fileName), "HELLO world", {flag:'w'});
+//         }
+//     } catch (e) {
+//         console.error(e.message)
+//     }
 // }
+
+
+// const worker = async () => {
+//     try {
+//         const fileNames = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']
+//         const folderNames = ['folder1', 'folder2', 'folder3', 'folder4']
 //
-// fileHandler()
+//         //створює папки з файлами в середині
+//         await Promise.all(folderNames.map(async (folderName, index) => {
+//                 const folderPath = path.join(process.cwd(), folderName);
+//
+//                 await fs.mkdir(folderPath, {recursive: true});
+//                 await fs.writeFile(path.join(folderPath, fileNames[index]), "HELLO world");
+//             })
+//         )
+//
+//         //показує у головній папці чи це файл чи папка
+//         const readFiles = await fs.readdir(path.join(process.cwd()));   //читаємо папку з шляхом
+//         console.log(readFiles)      // масив файлів і папок
+//         for (const file of readFiles) {
+//             const stats = await fs.stat(path.join(process.cwd(), file));
+//             const isFile = stats.isFile();      //перевіряє чи stats є файлом
+//             if (isFile) {
+//                 console.log("this is file : ", path.join(process.cwd(), file));
+//             } else {
+//                 console.log("this is directory : ", path.join(process.cwd(), file));
+//             }
+//         }
+//     } catch (e) {
+//         console.error(e.message)
+//     }
+// }
+
+
+// створює одним потоком файли і папки зразу
+const worker = async () => {
+    try {
+        const fileNames = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']
+        const folderNames = ['folder1', 'folder2', 'folder3', 'folder4']
+
+        const filesPromises = fileNames.map(async (fileName, index) => {
+            await fs.writeFile(path.join(process.cwd(), fileName), 'Hello World');
+        });
+
+        const foldersPromises = folderNames.map(async (folderName) => {
+            await fs.mkdir(path.join(process.cwd(), folderName), {recursive: true});
+        });
+
+        const result = Promise.allSettled([...filesPromises, ...foldersPromises]);
+        console.log(result)
+    } catch (e) {
+        console.error(e.message)
+    }
+}
+
+
+worker().then();
