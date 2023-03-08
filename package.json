@@ -1,0 +1,44 @@
+{
+  "name": "sept-22-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js sept-22",
+  "main": "src/app.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "rimraf dist && tsc-watch --onSuccess \"npm run watch\"",
+    "watch": "nodemon \"src/app.ts\" --watch \"./src\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orest-Sabara/sept-22-nodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orest-Sabara/sept-22-nodeJS/issues"
+  },
+  "homepage": "https://github.com/Orest-Sabara/sept-22-nodeJS#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "nodemon": "^2.0.21",
+    "rimraf": "^4.2.0",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^6.0.0",
+    "typescript": "^4.9.5"
+  }
+}
