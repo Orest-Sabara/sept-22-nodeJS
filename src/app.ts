@@ -17,7 +17,7 @@ app.use("/users", userRouter);
 
 // --- Error Handler ---
 app.use((err: IError, req: Request, res: Response, next: NextFunction) => {
-  const status = err.status;
+  const status = err.status || 500;
 
   return res.status(status).json({
     message: err.message,
@@ -29,7 +29,8 @@ app.get("/welcome", (req: Request, res: Response) => {
   res.send("WELCOME");
 });
 
-app.listen(configs.PORT, () => {
-  mongoose.connect(configs.DB_URL).then();
+app.listen(configs.PORT, async () => {
+  await mongoose.connect(configs.DB_URL);
+  // eslint-disable-next-line no-console
   console.log(`Server has started on PORT ${configs.PORT}`);
 });
