@@ -2,8 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import { User } from "../models/User.model";
 import { userService } from "../services/user.service";
-import { ICommonResponse } from "../types/common.types";
-import { IUser } from "../types/user.types";
+import { ICommonResponse, IUser } from "../types";
 
 // public private protected
 class UserController {
