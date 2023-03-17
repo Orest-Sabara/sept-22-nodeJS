@@ -14,11 +14,7 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 
 // --- Error Handler ---
-<<<<<<<<< Temporary merge branch 1
-app.use((err: IError, req: Request, res: Response, next: NextFunction) => {
-=========
 app.use((err: ApiError, req: Request, res: Response, next: NextFunction) => {
->>>>>>>>> Temporary merge branch 2
   const status = err.status || 500;
 
   return res.status(status).json({

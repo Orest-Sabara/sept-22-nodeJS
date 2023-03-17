@@ -1,15 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
-<<<<<<<<< Temporary merge branch 1
-import { User } from "../models/User.model";
-import { userService } from "../services/user.service";
-import { ICommonResponse } from "../types/common.types";
-import { IUser } from "../types/user.types";
-=========
 import { User } from "../models";
 import { userService } from "../services";
 import { ICommonResponse, IUser } from "../types";
->>>>>>>>> Temporary merge branch 2
 
 // public private protected
 class UserController {
