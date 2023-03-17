@@ -15,6 +15,7 @@ router.get(
   userMiddleware.getByIdOrThrow,
   userController.getById
 );
+
 router.put(
   "/:userId",
   authMiddleware.checkAccessToken,
@@ -23,6 +24,7 @@ router.put(
   userMiddleware.getByIdOrThrow,
   userController.update
 );
+
 router.delete(
   "/:userId",
   authMiddleware.checkAccessToken,

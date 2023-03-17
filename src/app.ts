@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
 
-// --- Error Handler ---
 app.use((err: ApiError, req: Request, res: Response, next: NextFunction) => {
+
   const status = err.status || 500;
 
   return res.status(status).json({
