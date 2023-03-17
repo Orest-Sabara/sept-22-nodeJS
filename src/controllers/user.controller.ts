@@ -1,8 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 
+<<<<<<< HEAD
 import { User } from "../models";
 import { userService } from "../services";
 import { ICommonResponse, IUser } from "../types";
+=======
+import { User } from "../models/User.model";
+import { userService } from "../services/user.service";
+import { ICommonResponse } from "../types/common.types";
+import { IUser } from "../types/user.types";
+>>>>>>> d9df9bf6a7f608bde6609c8de6c5d6ec87499eb9
 
 // public private protected
 class UserController {

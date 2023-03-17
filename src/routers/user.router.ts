@@ -7,6 +7,7 @@ const router = Router();
 
 // crud -- create, read, update, delete
 router.get("/", userController.getAll);
+router.post("/", userMiddleware.isUserValidCreate, userController.create);
 
 router.get(
   "/:userId",
