@@ -1,7 +1,3 @@
-export interface IError extends Error {
-  status: number;
-}
-
 export interface IMessage {
   message: string;
 }
@@ -9,9 +5,3 @@ export interface IMessage {
 export interface ICommonResponse<T> extends IMessage {
   data: T;
 }
-
-export interface IIndex {
-  [key: string]: any;
-}
-
-export type IRequest = IIndex;

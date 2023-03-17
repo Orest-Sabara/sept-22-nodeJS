@@ -1,22 +1,23 @@
 import { Router } from "express";
 
-import { userController } from "../controllers/user.controller";
-import { userMiddleware } from "../middlewares/user.middleware";
+import { userController } from "../controllers";
+import { authMiddleware, userMiddleware } from "../middlewares";
 
 const router = Router();
 
 // crud -- create, read, update, delete
 router.get("/", userController.getAll);
-router.post("/", userMiddleware.isValidCreate, userController.create);
 
 router.get(
   "/:userId",
+  authMiddleware.checkAccessToken,
   userMiddleware.isIdValid,
   userMiddleware.getByIdOrThrow,
   userController.getById
 );
 router.put(
   "/:userId",
+  authMiddleware.checkAccessToken,
   userMiddleware.isIdValid,
   userMiddleware.isValidUpdate,
   userMiddleware.getByIdOrThrow,
@@ -24,6 +25,7 @@ router.put(
 );
 router.delete(
   "/:userId",
+  authMiddleware.checkAccessToken,
   userMiddleware.isIdValid,
   userMiddleware.getByIdOrThrow,
   userController.delete

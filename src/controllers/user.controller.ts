@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
-import { User } from "../models/User.model";
-import { userService } from "../services/user.service";
+import { User } from "../models";
+import { userService } from "../services";
 import { ICommonResponse, IUser } from "../types";
 
 // public private protected

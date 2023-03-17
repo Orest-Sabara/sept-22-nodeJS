@@ -1,9 +1,9 @@
+import { IUser } from "./user.types";
+
 export interface ITokenPair {
   accessToken: string;
   refreshToken: string;
 }
 
-export interface ITokenPayload {
-  id: string;
-  name: string;
-}
+// Pick бере з IUser поля "_id" та "name"  ....  зворотній Omit візьме всі поля з IUser крім "_id" та "name"
+export type ITokenPayload = Pick<IUser, "_id" | "name">;
