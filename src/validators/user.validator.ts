@@ -1,8 +1,11 @@
 import * as Joi from "joi";
 
 import { regexConstants } from "../constants";
+<<<<<<<<< Temporary merge branch 1
+import { EGenders } from "../types/user.types";
+=========
 import { EGenders } from "../enums";
-
+>>>>>>>>> Temporary merge branch 2
 
 export class UserValidator {
   private static firstName = Joi.string().min(2).max(35).trim();
@@ -24,9 +27,12 @@ export class UserValidator {
     name: this.firstName,
     gender: this.gender,
   });
+<<<<<<<<< Temporary merge branch 1
+=========
 
   static loginUser = Joi.object({
     email: this.email.required(),
     password: this.password.required(),
   });
+>>>>>>>>> Temporary merge branch 2
 }

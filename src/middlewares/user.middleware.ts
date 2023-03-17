@@ -1,9 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { isObjectIdOrHexString } from "mongoose";
 
+<<<<<<<<< Temporary merge branch 1
+import { ApiError } from "../errors/api.error";
+import { User } from "../models/User.model";
+=========
 import { ApiError } from "../errors";
 import { User } from "../models";
 import { IUser } from "../types";
+>>>>>>>>> Temporary merge branch 2
 import { UserValidator } from "../validators";
 
 class UserMiddleware {
@@ -19,6 +24,8 @@ class UserMiddleware {
 
       if (!user) {
         throw new ApiError("User not found", 422);
+<<<<<<<<< Temporary merge branch 1
+=========
       }
 
       res.locals.user = { user };
@@ -146,6 +153,7 @@ class UserMiddleware {
 
       if (error) {
         throw new ApiError(error.message, 400);
+>>>>>>>>> Temporary merge branch 2
       }
 
       res.locals.user = user;

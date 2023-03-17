@@ -7,7 +7,6 @@ const router = Router();
 
 // crud -- create, read, update, delete
 router.get("/", userController.getAll);
-router.post("/", userMiddleware.isUserValidCreate, userController.create);
 
 router.get(
   "/:userId",
@@ -16,6 +15,7 @@ router.get(
   userMiddleware.getByIdOrThrow,
   userController.getById
 );
+
 router.put(
   "/:userId",
   authMiddleware.checkAccessToken,
@@ -24,6 +24,7 @@ router.put(
   userMiddleware.getByIdOrThrow,
   userController.update
 );
+
 router.delete(
   "/:userId",
   authMiddleware.checkAccessToken,
