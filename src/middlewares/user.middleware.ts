@@ -154,6 +154,24 @@ class UserMiddleware {
     }
   }
 
+  public async isValidChangePassword(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { error } = UserValidator.changeUserPassword.validate(req.body);
+
+      if (error) {
+        throw new ApiError(error.message, 400);
+      }
+
+      next();
+    } catch (e) {
+      next(e);
+    }
+  }
+
   public async isUserIdValid(
     req: Request,
     res: Response,
