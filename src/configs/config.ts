@@ -9,10 +9,15 @@ export const configs = {
   ACCESS_SECRET: process.env.JWT_ACCESS_SECRET || "aaa",
   REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || "bbb",
 
+  FORGOT_SECRET: process.env.JWT_FORGOT_SECRET || "bbb",
+  ACTIVATE_SECRET: process.env.JWT_ACTIVATE_SECRET || "bbb",
+
   NO_REPLAY_EMAIL: process.env.NO_REPLAY_EMAIL,
   NO_REPLAY_EMAIL_PASSWORD: process.env.NO_REPLAY_EMAIL_PASSWORD,
 
   TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
   TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
   TWILIO_SERVICE_SID: process.env.TWILIO_SERVICE_SID,
+
+  FRONT_URL: process.env.FRONT_URL,
 };

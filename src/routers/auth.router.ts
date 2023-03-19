@@ -22,12 +22,26 @@ router.post(
   userMiddleware.getDynamicallyOrThrow("email"),
   authController.login
 );
+
 router.post(
   "/password/change",
   commonMiddleware.isBodyValid(UserValidator.changeUserPassword),
   authMiddleware.checkAccessToken,
   authController.changePassword
 );
+
+router.post(
+  "/password/forgot",
+  userMiddleware.getDynamicallyOrThrow("email"),
+  authController.forgotPassword
+);
+
+router.post(
+  "/password/forgot/:token",
+  authMiddleware.checkActionForgotToken,
+  authController.setForgotPassword
+);
+
 router.post(
   "/refresh",
   authMiddleware.checkRefreshToken,
