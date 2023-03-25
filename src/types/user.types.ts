@@ -1,3 +1,5 @@
+import { Model } from "mongoose";
+
 export enum EGenders {
   male = "male",
   famele = "famele",
@@ -10,5 +12,19 @@ export interface IUser {
   email: string;
   password: string;
   gender: string;
-  phone: string;
+  age: number;
+  phone?: string;
+}
+
+export interface IUserMethods {
+  nameWithAge(): void;
+}
+
+export interface IUserVirtuals {
+  nameWithSurname: string;
+}
+
+export interface IUserModel
+  extends Model<IUser, object, IUserMethods, IUserVirtuals> {
+  findByName(name: string): Promise<IUser[]>;
 }
