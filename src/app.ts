@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
-import * as mongoose from "mongoose";
+import fileUploader from "express-fileupload";
+import mongoose from "mongoose";
 
 import { configs } from "./configs";
 import { cronRunner } from "./crons";
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUploader());
 
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
