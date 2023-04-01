@@ -72,7 +72,7 @@ class UserController {
     }
   }
 
-  public async uploadAvatar(
+public async uploadAvatar(
     req: Request,
     res: Response,
     next: NextFunction
@@ -111,3 +111,4 @@ class UserController {
 }
 
 export const userController = new UserController();
+
