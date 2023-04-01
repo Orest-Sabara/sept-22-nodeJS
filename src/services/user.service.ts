@@ -104,8 +104,8 @@ class UserService {
       throw new ApiError(e.message, e.status);
     }
   }
-
-  public async uploadAvatar(file: UploadedFile, user: IUser): Promise<IUser> {
+  
+public async uploadAvatar(file: UploadedFile, user: IUser): Promise<IUser> {
     try {
       const filePath = await s3Service.uploadPhoto(file, "user", user._id);
 
