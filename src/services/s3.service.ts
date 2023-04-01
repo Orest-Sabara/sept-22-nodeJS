@@ -34,7 +34,7 @@ class S3Service {
         Key: filePath, // для Bucket, щоб він знав куди покласти
         Body: file.data, // дані
         ContentType: file.mimetype, // тип файлу для Bucket
-        ACL: configs.AWS_S3_ACL, // права для даного фото | public
+        ACL: configs.AWS_S3_ACL, // права для даного фото |  public
       })
     );
 
