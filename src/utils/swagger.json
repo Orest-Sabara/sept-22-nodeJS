@@ -1,0 +1,273 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "sept-22-nodeJS",
+    "description": "Module Node.js 01.04.23",
+    "contact": {
+      "email": "orestsabara26it@gmail.com"
+    }
+  },
+  "paths": {
+    "/cars/{carId}": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "get car by id",
+        "operationId": "getCarById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cars"],
+        "summary": "put car by id",
+        "operationId": "putCarById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "delete car by id",
+        "operationId": "deleteCarById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "get user by id",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "put user by id",
+        "operationId": "putUserById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "delete user by id",
+        "operationId": "deleteUserById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      }
+    },
+    "/users/{userId}/avatar": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "put user avatar by id",
+        "operationId": "putUserAvatarById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "delete user avatar by id",
+        "operationId": "deleteUserAvatarById",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "no token provided"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Car": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string",
+          "example": "Audi"
+        },
+        "model": {
+          "type": "integer",
+          "example": "R8"
+        },
+        "year": {
+          "type": "number",
+          "example": "2018"
+        },
+        "user": {
+          "type": "object"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "example": "Orest"
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true,
+          "example": "orestsabara26it@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "boberASFg12e4!"
+        },
+        "age": {
+          "type": "number",
+          "example": "23"
+        },
+        "gender": {
+          "type": "string",
+          "example": "male"
+        },
+        "avatar": {
+          "type": "string",
+          "example": "https://www.nta.ua/wp-content/uploads/2023/03/bober.jpg"
+        },
+        "status": {
+          "type": "string",
+          "example": "active"
+        }
+      }
+    }
+  }
+}
