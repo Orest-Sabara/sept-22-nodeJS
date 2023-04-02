@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="block"></div>
+
+<input placeholder="message">
+<button>Send message</button>
+
+<button class="join">Join room</button>
+<button class="leave">Leave room</button>
+
+<div class="block2"></div>
+
+<script type="module">
+    import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+
+    const socket = io("http://localhost:5100", {
+        auth: {
+            token: "afsafasgfqwzqwr"
+        }
+    });
+
+    // socket.on("user: connected", (data)=>{
+    //     document.write(data.message);
+    // })
+
+    socket.on("message:get", (text)=> {
+        const p = document.createElement('p');
+        p.innerText = text;
+        document.querySelector(".block").appendChild(p);
+    })
+
+    document.querySelector("button").onclick = () => {
+        const text = document.querySelector("input").value
+        socket.emit("message:send", text);
+    }
+
+    const joinRoom = document.querySelector(".join");
+    const leaveRoom = document.querySelector(".leave");
+
+    joinRoom.onclick = () => {
+        socket.emit("join:room", {roomId: 1})
+    }
+
+    leaveRoom.onclick = () => {
+        socket.emit("left:room", {roomId: 1})
+    }
+
+    socket.on("user:joined", (data) => {
+        document.write(JSON.stringify(data))
+    })
+
+    socket.on("user:left", (data) => {
+        document.write(JSON.stringify(data))
+    })
+</script>
+
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>--><!-- Інший спосіб підключення -->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<script>-->
+<!--    const socket = io("http://localhost:5100");-->
+
+<!--    socket.on("message", () => {-->
+<!--        console.log('Message Received');-->
+<!--    })-->
+
+<!--    socket.on("message", (data)=>{-->
+<!--        console.log(data);-->
+<!--    })-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
